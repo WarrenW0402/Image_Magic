@@ -31,6 +31,50 @@ def to_greyscale(pixel: tuple, algo="average") -> tuple:
 
     return grey, grey, grey
 
+def brightness(pixel: tuple, magnitude: int) -> tuple:
+    """Increases the brightness of a pixel
+
+    Args:
+        pixel: a 3-tuple of (red, green, blue)
+            subpixel
+        magnitude: an int from -255 to 255
+
+        Returns:
+            a 3-tuple representing a brighter pixel
+    """
+    # break down the pixel into subpixels
+    red = pixel[0]
+    green = pixel[1]
+    blue = pixel[2]
+
+    MAX = 255
+    MIN = 0
+
+    # increase the value by some number
+    if red + magnitude > MAX:
+        red = MAX
+    elif red + magnitude < MIN:
+        red = MIN
+    else:
+        red += magnitude
+
+    if green + magnitude > MAX:
+        green = MAX
+    elif green + magnitude < MIN:
+        green = MIN
+    else:
+        green += magnitude
+
+    if blue + magnitude > MAX:
+        blue = MAX
+    elif blue + magnitude < MIN:
+        blue = MIN
+    else:
+        blue += magnitude
+
+    # return it
+    return red, green, blue
+
 
 # Load the image (pumpkin)
 # Open an output image that's the same size
@@ -59,9 +103,11 @@ for y in range(image_height):
         # Grab pixel information for THIS pixel
         pixel = image.getpixel((x, y))
 
-        grey_pixel = to_greyscale(pixel, "average")
+        # grey_pixel = to_greyscale(pixel, "average")
+        brighter_pixel = brightness(pixel, -100)
 
         # put that in the new image
-        output_image.putpixel((x, y), grey_pixel)
+        # output_image.putpixel((x, y), grey_pixel)
+        output_image.putpixel((x, y), brighter_pixel)
 
-output_image.save('grayscale2.jpg')
+output_image.save('brighterPic2.jpg')
