@@ -30,7 +30,7 @@ class Vehicle:
         self.max_speed = max_speed
         self.capacity = capacity
 
-    def vroom(self) -> str:
+    def vroom(self) -> None:
         result = self.max_speed
         return "vroom \n" * result
 
@@ -44,7 +44,7 @@ class Bus(Vehicle):
 
     def fare(self, age: float)->None:
         price = ""
-        if age<=18 and age >=60:
+        if age>=18 and age <=60:
             price = "5$"
             print(price)
         else:
@@ -52,4 +52,9 @@ class Bus(Vehicle):
             print(price)
 
 bus = Bus("BUS", 40, 10)
-bus.fare(20)
+bus.fare(18)
+bus.fare(-1)
+bus.fare(17)
+bus.fare(0)
+bus.fare(60)
+bus.fare(60.1)
