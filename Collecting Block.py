@@ -45,7 +45,7 @@ class Block(pygame.sprite.Sprite):
         self.rect = self.image.get_rect()
 
 
-def main() -> None:
+def main(score=None) -> None:
     """Driver of the Python script"""
     # Create the screen
     screen = pygame.display.set_mode(SCREEN_SIZE)
@@ -55,6 +55,7 @@ def main() -> None:
     done = False
     clock = pygame.time.Clock()
     num_blocks = 100
+    score = 0
 
     #Create the Player block
     player = Block(SKY_BLUE, 20, 15)
@@ -89,7 +90,16 @@ def main() -> None:
 
         # ----------- CHANGE ENVIRONMENT
         mousePos = pygame.mouse.get_pos()
-        player.rect = mousePos
+        player.rect.x, player.rect.y = mousePos
+
+        # Check all collision between player and the blocks
+        blocks_collided = pygame.sprite.spritecollide(player, block_sprites, block)
+
+
+        for block in blocks_collided:
+            score += 1
+            print(f"{score}")
+
         # ----------- DRAW THE ENVIRONMENT
         screen.fill(BGCOLOUR)      # fill with bgcolor
 

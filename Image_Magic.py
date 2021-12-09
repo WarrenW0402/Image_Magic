@@ -78,8 +78,8 @@ def brightness(pixel: tuple, magnitude: int) -> tuple:
 
 # Load the image (pumpkin)
 # Open an output image that's the same size
-image = Image.open('./halloween-unsplash.jpg')
-output_image = Image.open('./halloween-unsplash.jpg')
+image = Image.open('images/halloween-unsplash.jpg')
+output_image = Image.open('images/halloween-unsplash.jpg')
 
 # Grab pixel information
 a_pixel = image.getpixel((0, 0))  # grab pixel (0, 0) top-left
