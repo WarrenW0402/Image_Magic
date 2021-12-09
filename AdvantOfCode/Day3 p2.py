@@ -1,13 +1,9 @@
 with open("../Data/Input Day3 p2.txt") as f:
 
-    zerocount = 0
-    onecoount = 0
-    mostCommon = 0
-    leastCommon = 0
+
     list = []
     listOfValue = []
-    listOfMostCommon = []
-    listOfLeastCommon = []
+
 
     for i in f:
         listOfValue = i.strip()  # single list
@@ -16,7 +12,7 @@ with open("../Data/Input Day3 p2.txt") as f:
     def oxygenFunc():
         i = 0
         global list
-        while i < len(listOfValue):
+        while i < len(list):
             # while there are more than 1 elements in id_list
             count = [0, 0]
             for idx in list:
@@ -37,7 +33,7 @@ with open("../Data/Input Day3 p2.txt") as f:
                     if idx[i] == 0:
                         new_id_list.append(idx)
 
-                # remaining id list
+            # remaining id list
             list = new_id_list
             i += 1
 
@@ -76,11 +72,11 @@ with open("../Data/Input Day3 p2.txt") as f:
 oxygenFunc()
 
 
-for digit in listOfMostCommon:
-    numMC = numMC * 2 + int(digit)
-
-for digit in listOfLeastCommon:
-    numLC = numLC * 2 + int(digit)
+# for digit in listOfMostCommon:
+#     numMC = numMC * 2 + int(digit)
+#
+# for digit in listOfLeastCommon:
+#     numLC = numLC * 2 + int(digit)
 
 
 
